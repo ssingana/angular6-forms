@@ -2,20 +2,28 @@
 <button class="btn btn-primary">Submit</button>
 <div class="container-fluid mb-5">
   <form #userForm="ngForm">
-    {{userForm.value | json}}
+    <!-- {{userForm.value | json}}
     <hr/>
-    {{userModel | json}}
+    {{userModel | json}} -->
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="userModel.name">
-    </div>
+      <input type="text" name="username" required class="form-control" [(ngModel)]="userModel.username" #un="ngModel"
+      [class.is-invalid]="un.invalid && un.touched">
+      <small class="text-danger" [class.d-none]="un.valid || un.untouched">Name is required.</small>
+     </div>
+     <!-- {{name.untouched}} <hr/>
+     {{cname.className}} -->
     <div class="form-group">
       <label>Email</label>
-      <input type="text" class="form-control" name="email" [(ngModel)]="userModel.email">
+      <input type="text" required class="form-control" name="email" [(ngModel)]="userModel.email" #em="ngModel"
+      [class.is-invalid]="em.invalid && em.touched" pattern="^\d{10}$">
+      <small class="text-danger" [class.d-none]="em.valid || em.untouched">Email is required.</small>
     </div>
     <div class="form-group">
       <label>Mobile</label>
-      <input type="text" class="form-control" name="mobile" [(ngModel)]="userModel.mobile">
+      <input type="text" required class="form-control" name="mobile" [(ngModel)]="userModel.mobile" #mo="ngModel"
+      [class.is-invalid]="mo.invalid && mo.touched">
+      <small class="text-danger" [class.d-none]="mo.valid || mo.untouched">Mobile is required.</small>
     </div>
   </form>
 </div>

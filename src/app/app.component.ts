@@ -8,5 +8,5 @@ import { Usermodel } from './usermodel';
 })
 export class AppComponent {
   title = 'app';
-  userModel = new Usermodel('sreenu','test@email.com',90871256);
+  userModel = new Usermodel('','test@email.com',90871256);
 }
