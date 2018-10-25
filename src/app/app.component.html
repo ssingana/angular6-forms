@@ -1,5 +1,8 @@
 <h1>angular forms development</h1>
 <div class="container-fluid mb-5">
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
   <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
     <!-- {{userForm.value | json}}
     <hr/>
@@ -38,5 +41,6 @@
       </div>
     </div>
     <button class="btn btn-primary" [disabled]="userForm.form.invalid || topicHasError">Submit</button>
+    <button class="btn btn-primary" (click)="errorMsg()">ErrorHandle</button>
   </form>
 </div>

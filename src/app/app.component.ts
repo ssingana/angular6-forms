@@ -11,25 +11,32 @@ export class AppComponent {
   title = 'app';
   topicHasError = true;
   submitted = false;
-  userModel = new Usermodel('Sreeni','email@email.com',5678912359, 'React');
+  errorMessage = '';
+  userModel = new Usermodel('Sreeni', 'email@email.com', 5678912359, 'React');
 
-  topics = ['Angular','React','VueJS'];
-constructor(private formService : FormserviceService){}
-  validateTopic(value){
-    if(value === 'default'){
-     this.topicHasError = true;
+  topics = ['Angular', 'React', 'VueJS'];
+  constructor(private formService: FormserviceService) { }
+  validateTopic(value) {
+    if (value === 'default') {
+      this.topicHasError = true;
     }
-     else {
-     this.topicHasError = false;
-     }
+    else {
+      this.topicHasError = false;
+    }
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
-    console.log(this.userModel);
-this.formService.sendUser(this.userModel).subscribe(
-  data => console.log('success : ', data),
-  error => console.log('Error :', error)
-);
+    this.formService.sendUser(this.userModel).subscribe(
+      data => console.log('success : ', data),
+      error => this.errorMessage = error.statusText
+    );
+  }
+
+  errorMsg() {
+    this.formService.sendUserWithError(this.userModel).subscribe(
+      data => console.log('success : ', data),
+      error => this.errorMessage = error.statusText
+    );
   }
 }
