@@ -1,5 +1,4 @@
 <h1>angular forms development</h1>
-<button class="btn btn-primary">Submit</button>
 <div class="container-fluid mb-5">
   <form #userForm="ngForm">
     {{userForm.value | json}}
@@ -38,5 +37,6 @@
       <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Topic is required.</small>
       </div>
     </div>
+    <button class="btn btn-primary" [disabled]="userForm.form.invalid || topicHasError">Submit</button>
   </form>
 </div>
