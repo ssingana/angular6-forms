@@ -8,5 +8,16 @@ import { Usermodel } from './usermodel';
 })
 export class AppComponent {
   title = 'app';
+  topicHasError = true;
   userModel = new Usermodel('','',90);
+  topics = ['Angular','React','VueJS'];
+
+  validateTopic(value){
+    if(value === 'default'){
+     this.topicHasError = true;
+    }
+     else {
+     this.topicHasError = false;
+     }
+  }
 }

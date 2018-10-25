@@ -2,8 +2,8 @@
 <button class="btn btn-primary">Submit</button>
 <div class="container-fluid mb-5">
   <form #userForm="ngForm">
-    <!-- {{userForm.value | json}}
-    <hr/>
+    {{userForm.value | json}}
+    <hr/><!-- 
     {{userModel | json}} -->
     <div class="form-group">
       <label>Name</label>
@@ -27,7 +27,15 @@
       <div *ngIf="mo.errors && (mo.invalid || mo.touched)">
         <small class="text-danger" *ngIf="mo.errors.required">Mobile number is required.</small>
         <small class="text-danger" *ngIf="mo.errors.pattern">Mobile number must be 10 digits.</small>
-
+      </div>
+      <div class="form-group">
+        <label>Select List</label>
+        <select (blur)="validateTopic(topic.value)" [class.is-invalid]="topicHasError && topic.touched"
+        (change)="validateTopic(topic.value)" class="custom-select" required name="topic" #topic="ngModel" [(ngModel)]="userModel.topic">
+        <option value="default">Please Select</option>
+        <option *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Topic is required.</small>
       </div>
     </div>
   </form>
