@@ -1,4 +1,3 @@
 export class Usermodel {
-    public topic : string = 'default';
-    constructor(public name: string, public email:string, public mobile: number){}
+    constructor(public name: string, public email:string, public mobile: number, public topic : string){}
 }
