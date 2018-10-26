@@ -25,7 +25,8 @@ export class AppComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit(userform) {
+    console.log(userform);
     this.submitted = true;
     this.formService.sendUser(this.userModel).subscribe(
       data => console.log('success : ', data),

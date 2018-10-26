@@ -3,7 +3,7 @@
   <div class="alert alert-danger" *ngIf="errorMessage">
     {{errorMessage}}
   </div>
-  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit(userForm)" novalidate>
     <!-- {{userForm.value | json}}
     <hr/>
     {{userModel | json}} -->
